@@ -50,5 +50,29 @@ def display_graph(graph):
 
 display_graph(parse_constraint_file("table 1.txt"))
 
+def detect_cycle(graph):
+    def dfs(node, visited, rec_stack):
+        visited.add(node)
+        rec_stack.add(node)
+        for successor in graph[node]["successors"]:
+            if successor not in visited:
+                if dfs(successor, visited, rec_stack):
+                    return True
+            elif successor in rec_stack:
+                return True
+        rec_stack.remove(node)
+        return False
 
+    visited = set()
+    rec_stack = set()
+    for node in graph:
+        if node not in visited and node != 0 and node != max(graph.keys()):
+            if dfs(node, visited, rec_stack):
+                return True
+    return False
+
+for k in range (1,15):
+    display_graph(parse_constraint_file("Table testing/table "+str(k)+".txt"))
+    print("Negative condition check is: "+str(detect_negative_edges(parse_constraint_file("Table testing/table "+str(k)+".txt"))))
+    print("Cycle condition check is: "+str(detect_cycle(parse_constraint_file("Table testing/table "+str(k)+".txt"))))
 
