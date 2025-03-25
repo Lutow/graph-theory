@@ -23,17 +23,26 @@ def parse_constraint_file(filename):
             predecessors = set(parts[2:]) if len(parts) > 2 else set()
             graph[node] = {"duration": duration, "predecessors": predecessors, "successors": set()}
 
-    # Compute successors by scanning predecessors
     for node, data in graph.items():
         for pred in data["predecessors"]:
             graph[pred]["successors"].add(node)
 
     return graph
 
+
+def detect_negative_edges(graph):
+    for node, data in graph.items():
+        if data["duration"] < 0:
+            return True, print("Negative duration detected\n")
+        else:
+            return False, print("No negative duration detected\n")
+
+
 def display_graph(graph):
     print("Creating the scheduling graph:\n")
     print(f"{len(graph.keys())} vertices")
     print(sum(len(data["successors"]) for data in graph.values()), "edges\n")
+    detect_negative_edges(graph)
     for nodes, edges in graph.items():
         print(f"{nodes} -> {edges["successors"]} = {edges["duration"]}")
     return print("\n-- End of graph --")
