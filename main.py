@@ -44,7 +44,7 @@ def display_graph(graph):
     print(sum(len(data["successors"]) for data in graph.values()), "edges\n")
     detect_negative_edges(graph)
     for nodes, edges in graph.items():
-        print(f"{nodes} -> {edges["successors"]} = {edges["duration"]}")
+        print(f"{nodes} -> {edges['successors']} = {edges['duration']}")
     return print("\n-- End of graph --")
 
 
