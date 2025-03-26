@@ -125,3 +125,5 @@ for k in range (1,15):
         for node, r in ranks.items():
             if node != 1 and node != 12:  
                 print(f"Vertex {node}: Rank {r}")
+    else:
+        print ("There is a cycle so we cannot compute the ranks.")
