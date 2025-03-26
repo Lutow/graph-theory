@@ -71,8 +71,54 @@ def detect_cycle(graph):
                 return True
     return False
 
+def display_value_matrix(graph):
+    nodes = sorted(graph.keys())
+    matrix = [["*" for _ in nodes] for _ in nodes]
+    for node in nodes:
+        for successor in graph[node]["successors"]:
+            matrix[node][successor] = graph[successor]["duration"]
+    print("Value Matrix")
+    header = "   " + "  ".join(f"{node:>2}" for node in nodes)
+    print(header)
+    for i, row in enumerate(matrix):
+        row_str = f"{nodes[i]:>2} " + "  ".join(f"{val:>2}" for val in row)
+        print(row_str)
+
+def compute_ranks(graph):
+    if not detect_cycle(graph):
+        from collections import deque
+
+        # Initialize in-degree of each vertex
+        in_degree = {node: len(graph[node]["predecessors"]) for node in graph}
+        queue = deque([node for node in graph if in_degree[node] == 0])
+        rank = {}
+        current_rank = -1 #We set up a initial value of -1 so our ranking computation loop starts at value 0 
+
+        while queue:
+            current_rank += 1
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                rank[node] = current_rank
+                for successor in graph[node]["successors"]:
+                    in_degree[successor] -= 1
+                    if in_degree[successor] == 0:
+                        queue.append(successor)
+
+        return rank
+    else:
+
+        print("A cycle has been detect, unable to compute rank !")
+
+
+
 for k in range (1,15):
     display_graph(parse_constraint_file("Table testing/table "+str(k)+".txt"))
     print("Negative condition check is: "+str(detect_negative_edges(parse_constraint_file("Table testing/table "+str(k)+".txt"))))
     print("Cycle condition check is: "+str(detect_cycle(parse_constraint_file("Table testing/table "+str(k)+".txt"))))
-
+    display_value_matrix(parse_constraint_file("Table testing/table "+str(k)+".txt"))
+    ranks = compute_ranks(parse_constraint_file("Table testing/table "+str(k)+".txt"))
+    print("Ranks of vertices:")
+    if ranks:
+        for node, r in ranks.items():
+            if node != 1 and node != 12:  
+                print(f"Vertex {node}: Rank {r}")
