@@ -72,11 +72,14 @@ def detect_cycle(graph):
     return False
 
 def display_value_matrix(graph):
-    nodes = sorted(graph.keys())
-    matrix = [["*" for _ in nodes] for _ in nodes]
+    nodes = sorted(graph.keys())  # Get sorted task numbers
+    matrix = [["*" for _ in nodes] for _ in nodes]  # Initialize matrix
+
     for node in nodes:
         for successor in graph[node]["successors"]:
-            matrix[node][successor] = graph[successor]["duration"]
+            node_idx = nodes.index(node)
+            successor_idx = nodes.index(successor)
+            matrix[node_idx][successor_idx] = graph[successor]["duration"]
     print("Value Matrix")
     header = "   " + "  ".join(f"{node:>2}" for node in nodes)
     print(header)
