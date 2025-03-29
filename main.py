@@ -113,6 +113,7 @@ def compute_ranks(graph):
         print("A cycle has been detect, unable to compute rank !")
 
 
+
 while True:
     TableNumber = int(input("Please enter an integer between 1 and 15 to choose your table: "))
     while TableNumber > 15 or TableNumber < 1:
