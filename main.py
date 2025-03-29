@@ -112,20 +112,20 @@ def compute_ranks(graph):
 
         print("A cycle has been detect, unable to compute rank !")
 
-while true:
-    TableNumber = input("Please enter an integer between 1 and 15 to choose your table: ")
+while True:
+    TableNumber = int(input("Please enter an integer between 1 and 15 to choose your table: "))
     while TableNumber > 15 or TableNumber < 1:
         TableNumber = input("Please enter an integer between 1 and 15 to choose your table: ")
     x = 1
     while x < 7:
-        x = input("What do you want to do with this graph ? \n"
+        x = int(input("What do you want to do with this graph ? \n"
               "1. Display the graph\n"
               "2. Display the value matrix and get the ranks\n"
               "3. Execute the negative condition and cycle checks\n"
               "4. Compute the earliest date calendar\n"
               "5. Compute the latest date calendar\n"
               "6. Compute the floats\n"
-              "7. Try another with another table")
+              "7. Try another with another table"))
         if x == 1:
             display_graph(parse_constraint_file("Table testing/table "+ str(TableNumber)+ ".txt"))
         elif x == 2:
