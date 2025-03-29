@@ -112,18 +112,39 @@ def compute_ranks(graph):
 
         print("A cycle has been detect, unable to compute rank !")
 
-
-
-for k in range (1,15):
-    display_graph(parse_constraint_file("Table testing/table "+str(k)+".txt"))
-    print("Negative condition check is: "+str(detect_negative_edges(parse_constraint_file("Table testing/table "+str(k)+".txt"))))
-    print("Cycle condition check is: "+str(detect_cycle(parse_constraint_file("Table testing/table "+str(k)+".txt"))))
-    display_value_matrix(parse_constraint_file("Table testing/table "+str(k)+".txt"))
-    ranks = compute_ranks(parse_constraint_file("Table testing/table "+str(k)+".txt"))
-    print("Ranks of vertices:")
-    if ranks:
-        for node, r in ranks.items():
-            if node != 1 and node != 12:  
-                print(f"Vertex {node}: Rank {r}")
-    else:
-        print ("There is a cycle so we cannot compute the ranks.")
+while true:
+    TableNumber = input("Please enter an integer between 1 and 15 to choose your table: ")
+    while TableNumber > 15 or TableNumber < 1:
+        TableNumber = input("Please enter an integer between 1 and 15 to choose your table: ")
+    x = 1
+    while x < 7:
+        x = input("What do you want to do with this graph ? \n"
+              "1. Display the graph\n"
+              "2. Display the value matrix and get the ranks\n"
+              "3. Execute the negative condition and cycle checks\n"
+              "4. Compute the earliest date calendar\n"
+              "5. Compute the latest date calendar\n"
+              "6. Compute the floats\n"
+              "7. Try another with another table")
+        if x == 1:
+            display_graph(parse_constraint_file("Table testing/table "+ str(TableNumber)+ ".txt"))
+        elif x == 2:
+            display_value_matrix(parse_constraint_file("Table testing/table " + str(k) + ".txt"))
+            if ranks:
+                for node, r in ranks.items():
+                    if node != 1 and node != 12:
+                        print(f"Vertex {node}: Rank {r}")
+            else:
+                print("There is a cycle so we cannot compute the ranks.")
+        elif x == 3:
+            print("Negative condition check is: " + str(
+                detect_negative_edges(parse_constraint_file("Table testing/table " + str(k) + ".txt"))))
+            print("Cycle condition check is: " + str(
+                detect_cycle(parse_constraint_file("Table testing/table " + str(k) + ".txt"))))
+        """elif x == 4:
+                earliest
+            elif x == 5:
+                latest
+            elif x == 6:
+                floats
+                    """
