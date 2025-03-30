@@ -1,6 +1,6 @@
-def parse_constraint_file(filename):
-    graph = {}
-    graph[0] = {"duration": 0, "predecessors": set(), "successors": set()}
+def parse_constraint_file(filename): # Stores graph info in memory using dictionary based on a table.txt file
+    graph = {} # Dictionary instanciation
+    graph[0] = {"duration": 0, "predecessors": set(), "successors": set()} # Graph storage form in memory
     with open(filename, "r") as file:
         for line in file:
             parts = list(map(int, line.split()))
@@ -16,7 +16,7 @@ def parse_constraint_file(filename):
             }
 
     start_tasks = {node for node, data in graph.items() if node != 0 and not data["predecessors"]}
-    graph[0]["successors"] = start_tasks 
+    graph[0]["successors"] = start_tasks # Intital state 0 instanciation
 
     for task in start_tasks:
         graph[task]["predecessors"].add(0)
@@ -27,7 +27,7 @@ def parse_constraint_file(filename):
 
     end_tasks = {node for node, data in graph.items() if not data["successors"]}
 
-    omega = max(graph.keys()) + 1  # N+1
+    omega = max(graph.keys()) + 1  # State Omega or N+1 instanciation
     graph[omega] = {"duration": 0, "predecessors": end_tasks, "successors": set()}
 
     for task in end_tasks:
@@ -36,7 +36,7 @@ def parse_constraint_file(filename):
     return graph
 
 
-def detect_negative_edges(graph):
+def detect_negative_edges(graph): # Check negative values thorugh every vertices of a graph
     for node, data in graph.items():
         if data["duration"] < 0:
             return True, print("Negative duration detected\n")
@@ -44,7 +44,7 @@ def detect_negative_edges(graph):
             return False, print("No negative duration detected\n")
 
 
-def display_graph(graph):
+def display_graph(graph): # Display successors and predecessor of each vertices for a given graph
     print("Creating the scheduling graph:\n")
     print(f"{len(graph.keys())} vertices")
     print(sum(len(data["successors"]) for data in graph.values()), "edges\n")
@@ -56,7 +56,7 @@ def display_graph(graph):
     return print("\n-- End of graph --")
 
 
-def detect_cycle(graph):
+def detect_cycle(graph): # Detects cycle in a given graph using sets and stack 
     def dfs(node, visited, rec_stack):
         visited.add(node)
         rec_stack.add(node)
@@ -72,7 +72,7 @@ def detect_cycle(graph):
     visited = set()
     rec_stack = set()
     for node in graph:
-        if node not in visited and node != 0 and node != max(graph.keys()):
+        if node not in visited and node != 0 and node != max(graph.keys()): # Excludes the fictious state 0 and N+1 of the cycle check
             if dfs(node, visited, rec_stack):
                 return True
     return False
@@ -145,7 +145,7 @@ def critical_path(floats, graph):
     print(" -> ".join(map(str, cp)))
     return cp
     
-
+# Menu interface for testing 
 while True:
     TableNumber = int(input("Please enter an integer between 1 and 15 to choose your table: "))
     while TableNumber > 15 or TableNumber < 1:
