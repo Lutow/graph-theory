@@ -143,20 +143,20 @@ def compute_ranks(graph):
         print("A cycle has been detect, unable to compute rank !")
 
 
-def compute_earliest_dates(graph):
-    from collections import deque
-    earliest_date = {node: 0 for node in graph}
-    in_degree = {node: len(graph[node]["predecessors"]) for node in graph}
-    queue = deque([node for node in graph if in_degree[node] == 0])
-    while queue:
-        current = queue.popleft()
-        for successor in graph[current]["successors"]:
-            earliest_date[successor] = max(earliest_date[successor], earliest_date[current] + graph[current]["duration"])
-            in_degree[successor]-= 1
-            if in_degree[successor] == 0:
-                queue.append(successor)
+def earliest_dates(graph):
+    ESD = {node: 0 for node in graph}  
+    for node in sorted(graph.keys()):  
+        if graph[node]["predecessors"]:  
+            ESD[node] = max(ESD[p] + graph[p]["duration"] for p in graph[node]["predecessors"])
+    return ESD 
 
-    return earliest_date
+
+def latest_dates(graph):
+    LD = {node: earliest_dates(graph)[node] for node in graph}
+    for node in sorted(graph.keys(), reverse=True):
+        if graph[node]["successors"]:
+            LD[node] = min(LD[s] for s in graph[node]["successors"]) - graph[node]["duration"]
+    return LD
 
 
 
