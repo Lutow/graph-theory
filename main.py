@@ -157,8 +157,17 @@ def latest_dates(graph):
         if graph[node]["successors"]:
             LD[node] = min(LD[s] for s in graph[node]["successors"]) - graph[node]["duration"]
     return LD
+    
+
+def compute_float(graph):
+    return {node: latest_dates(graph)[node] - earliest_dates(graph)[node] for node in graph}
 
 
+
+def critical_path(floats, graph):
+    cp = [node for node in floats if floats[node] == 0 and graph[node]["duration"] > 0]
+    return cp
+    
 
 while True:
     TableNumber = int(input("Please enter an integer between 1 and 15 to choose your table: "))
