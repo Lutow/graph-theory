@@ -143,6 +143,22 @@ def compute_ranks(graph):
         print("A cycle has been detect, unable to compute rank !")
 
 
+def compute_earliest_dates(graph):
+    from collections import deque
+    earliest_date = {node: 0 for node in graph}
+    in_degree = {node: len(graph[node]["predecessors"]) for node in graph}
+    queue = deque([node for node in graph if in_degree[node] == 0])
+    while queue:
+        current = queue.popleft()
+        for successor in graph[current]["successors"]:
+            earliest_date[successor] = max(earliest_date[successor], earliest_date[current] + graph[current]["duration"])
+            in_degree[successor]-= 1
+            if in_degree[successor] == 0:
+                queue.append(successor)
+
+    return earliest_date
+
+
 
 while True:
     TableNumber = int(input("Please enter an integer between 1 and 15 to choose your table: "))
@@ -174,7 +190,11 @@ while True:
                 detect_negative_edges(parse_constraint_file("Table testing/table " + str(TableNumber) + ".txt"))))
             print("Cycle condition check is: " + str(
                 detect_cycle(parse_constraint_file("Table testing/table " + str(TableNumber) + ".txt"))))
-        """elif x == 4:
+        elif x == 4:
+            earliest_dates = compute_earliest_dates(graph)
+            for node, date in earliest_dates.items():
+                print(f"Task {node}: Earliest Start Time = {date}")
+            """
                 earliest
             elif x == 5:
                 latest
