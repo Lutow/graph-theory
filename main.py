@@ -1,17 +1,3 @@
-graph = {
-    1: {"duration": 9, "predecessors": set(), "successors": {4, 5}},
-    2: {"duration": 2, "predecessors": set(), "successors": {3, 10}},
-    3: {"duration": 3, "predecessors": {2}, "successors": {10}},
-    4: {"duration": 5, "predecessors": {1}, "successors": {5, 7, 8, 9}},
-    5: {"duration": 2, "predecessors": {1, 4}, "successors": {6, 8, 11}},
-    6: {"duration": 2, "predecessors": {5}, "successors": {11}},
-    7: {"duration": 2, "predecessors": {4}, "successors": {11}},
-    8: {"duration": 4, "predecessors": {4, 5}, "successors": {11}},
-    9: {"duration": 5, "predecessors": {4}, "successors": {}},
-    10: {"duration": 1, "predecessors": {2, 3}, "successors": {}},
-    11: {"duration": 2, "predecessors": {1, 5, 6, 7, 8}, "successors": {}},
-}
-
 def parse_constraint_file(filename):
     graph = {}
 
@@ -77,8 +63,6 @@ def display_graph(graph):
             print(f"{nodes} -> {edges['successors']} = {edges['duration']}")
     return print("\n-- End of graph --")
 
-
-display_graph(parse_constraint_file("table 1.txt"))
 
 def detect_cycle(graph):
     def dfs(node, visited, rec_stack):
@@ -174,40 +158,22 @@ while True:
     TableNumber = int(input("Please enter an integer between 1 and 15 to choose your table: "))
     while TableNumber > 15 or TableNumber < 1:
         TableNumber = int(input("Please enter an integer between 1 and 15 to choose your table: "))
-    x = 1
-    while x < 7:
-        x = int(input("What do you want to do with this graph ? \n"
-              "1. Display the graph\n"
-              "2. Display the value matrix and get the ranks\n"
-              "3. Execute the negative condition and cycle checks\n"
-              "4. Compute the earliest date calendar\n"
-              "5. Compute the latest date calendar\n"
-              "6. Compute the floats\n"
-              "7. Try another with another table"))
-        if x == 1:
-            display_graph(parse_constraint_file("Table testing/table "+ str(TableNumber)+ ".txt"))
-        elif x == 2:
-            ranks = compute_ranks(parse_constraint_file("Table testing/table " + str(TableNumber) + ".txt"))
-            display_value_matrix(parse_constraint_file("Table testing/table " + str(TableNumber) + ".txt"))
-            if ranks:
-                for node, r in ranks.items():
-                    if node != 1 and node != 12:
-                        print(f"Vertex {node}: Rank {r}")
-            else:
-                print("There is a cycle so we cannot compute the ranks.")
-        elif x == 3:
-            print("Negative condition check is: " + str(
-                detect_negative_edges(parse_constraint_file("Table testing/table " + str(TableNumber) + ".txt"))))
-            print("Cycle condition check is: " + str(
-                detect_cycle(parse_constraint_file("Table testing/table " + str(TableNumber) + ".txt"))))
-        elif x == 4:
-            earliest_dates = compute_earliest_dates(graph)
-            for node, date in earliest_dates.items():
-                print(f"Task {node}: Earliest Start Time = {date}")
-            """
-                earliest
-            elif x == 5:
-                latest
-            elif x == 6:
-                floats
-                    """
+    graph = parse_constraint_file("Table testing/table "+ str(TableNumber)+ ".txt")
+    print("\n")
+    display_graph(graph)
+    if not detect_cycle(graph) or not detect_negative_edges(graph):
+        print("We made sure that we have no negative durations or cycles which means we can now do the other computations.\n")
+        print("Ranks :\n" + str(compute_ranks(graph)) + "\n")
+        display_value_matrix(graph)
+        print("Earliest dates table : \n   " + str(earliest_dates(graph)) + "\n")
+        print("Latest dates table : \n   " +str(latest_dates(graph)) + "\n")
+        print("Floats table : \n   " + str(compute_float(graph)) + "\n")
+        print("Critical path : \n  ", end= " ")
+        critical_path(compute_float(graph), graph)
+    elif detect_cycle(graph):
+        print("This graph contains at least a cycle, this means we cannot do any further computations.\n")
+    elif detect_negative_edges(graph):
+        print("This graph contains negative durations, this means we cannot do any further computation.\n")
+    x = input("Do you want to work on another table ? Y/N \n")
+    if x == "N":
+        break
