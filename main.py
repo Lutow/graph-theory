@@ -166,6 +166,7 @@ def compute_float(graph):
 
 def critical_path(floats, graph):
     cp = [node for node in floats if floats[node] == 0 and graph[node]["duration"] > 0]
+    print(" -> ".join(map(str, cp)))
     return cp
     
 
