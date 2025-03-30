@@ -71,8 +71,10 @@ def display_graph(graph):
     print(f"{len(graph.keys())} vertices")
     print(sum(len(data["successors"]) for data in graph.values()), "edges\n")
     detect_negative_edges(graph)
+    last = max(graph.keys())
     for nodes, edges in graph.items():
-        print(f"{nodes} -> {edges['successors']} = {edges['duration']}")
+        if nodes != last:
+            print(f"{nodes} -> {edges['successors']} = {edges['duration']}")
     return print("\n-- End of graph --")
 
 
@@ -104,11 +106,11 @@ def display_value_matrix(graph):
     matrix = [["*" for _ in nodes] for _ in nodes]  # Initialize matrix
 
     for node in nodes:
-        for successor in graph[node]["successors"]:
+        for predecessor in graph[node]["predecessors"]:
             node_idx = nodes.index(node)
-            successor_idx = nodes.index(successor)
-            matrix[node_idx][successor_idx] = graph[successor]["duration"]
-    print("Value Matrix")
+            predecessor_idx = nodes.index(predecessor)
+            matrix[predecessor_idx][node_idx] = graph[predecessor]["duration"]
+    print("\nValue Matrix:\n")
     header = "   " + "  ".join(f"{node:>2}" for node in nodes)
     print(header)
     for i, row in enumerate(matrix):
