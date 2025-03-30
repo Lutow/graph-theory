@@ -14,18 +14,46 @@ graph = {
 
 def parse_constraint_file(filename):
     graph = {}
+
+    # Step 1: Add fictitious start node (0) first
+    graph[0] = {"duration": 0, "predecessors": set(), "successors": set()}
+
+    # Step 2: Read file and construct basic graph
     with open(filename, "r") as file:
         for line in file:
             parts = list(map(int, line.split()))  # Convert to integers
 
             node = parts[0]  # Task number
-            duration = parts[1]  # cost (duration)
+            duration = parts[1]  # Duration (cost)
             predecessors = set(parts[2:]) if len(parts) > 2 else set()
-            graph[node] = {"duration": duration, "predecessors": predecessors, "successors": set()}
 
+            graph[node] = {
+                "duration": duration,
+                "predecessors": predecessors,
+                "successors": set()
+            }
+
+    # Step 3: Identify tasks with no predecessors → They should depend on node 0
+    start_tasks = {node for node, data in graph.items() if node != 0 and not data["predecessors"]}
+    graph[0]["successors"] = start_tasks  # Link α to these tasks
+
+    for task in start_tasks:
+        graph[task]["predecessors"].add(0)
+
+    # Step 4: Establish successor relationships
     for node, data in graph.items():
         for pred in data["predecessors"]:
             graph[pred]["successors"].add(node)
+
+    # Step 5: Identify nodes with no successors → They should lead to node N+1 (ω)
+    end_tasks = {node for node, data in graph.items() if not data["successors"]}
+
+    # Step 6: Define fictitious end node (ω) at the **end**
+    omega = max(graph.keys()) + 1  # N+1
+    graph[omega] = {"duration": 0, "predecessors": end_tasks, "successors": set()}
+
+    for task in end_tasks:
+        graph[task]["successors"].add(omega)
 
     return graph
 
