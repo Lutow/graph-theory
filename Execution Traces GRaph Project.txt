@@ -1,0 +1,791 @@
+"C:\Users\nicol\PycharmProjects\Graph Theory Project\venv\Scripts\python.exe" "C:/Users/nicol/PycharmProjects/Graph Theory Project/main.py" 
+
+*** GRAPH NUMBER1 STUDY ***
+
+
+Creating the scheduling graph:
+
+15 vertices
+18 edges
+
+No negative duration detected
+
+0 -> {1, 2} = 0
+1 -> {3} = 2
+2 -> {4} = 5
+3 -> {4, 12} = 4
+4 -> {11, 5} = 2
+5 -> {6} = 5
+6 -> {13, 7} = 5
+7 -> {8} = 9
+8 -> {9} = 2
+9 -> {14} = 5
+10 -> {14} = 1
+11 -> {10} = 1
+12 -> {13} = 1
+13 -> {4} = 9
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+ 0  *   0   0   *   *   *   *   *   *   *   *   *   *   *   *
+ 1  *   *   *   2   *   *   *   *   *   *   *   *   *   *   *
+ 2  *   *   *   *   5   *   *   *   *   *   *   *   *   *   *
+ 3  *   *   *   *   4   *   *   *   *   *   *   *   4   *   *
+ 4  *   *   *   *   *   2   *   *   *   *   *   2   *   *   *
+ 5  *   *   *   *   *   *   5   *   *   *   *   *   *   *   *
+ 6  *   *   *   *   *   *   *   5   *   *   *   *   *   5   *
+ 7  *   *   *   *   *   *   *   *   9   *   *   *   *   *   *
+ 8  *   *   *   *   *   *   *   *   *   2   *   *   *   *   *
+ 9  *   *   *   *   *   *   *   *   *   *   *   *   *   *   5
+10  *   *   *   *   *   *   *   *   *   *   *   *   *   *   1
+11  *   *   *   *   *   *   *   *   *   *   1   *   *   *   *
+12  *   *   *   *   *   *   *   *   *   *   *   *   *   1   *
+13  *   *   *   *   9   *   *   *   *   *   *   *   *   *   *
+14  *   *   *   *   *   *   *   *   *   *   *   *   *   *   *
+No negative duration detected
+
+This graph contains at least a cycle, this means we cannot do any further computations.
+
+
+*** END OF GRAPH NUMBER 1 STUDY ***
+
+*** GRAPH NUMBER2 STUDY ***
+
+
+Creating the scheduling graph:
+
+15 vertices
+23 edges
+
+No negative duration detected
+
+0 -> {1, 2} = 0
+1 -> {3, 6} = 2
+2 -> {6} = 5
+3 -> {4} = 4
+4 -> {5} = 1
+5 -> {14} = 9
+6 -> {13, 11, 5, 7} = 2
+7 -> {8, 12} = 5
+8 -> {9, 12, 5} = 5
+9 -> {10, 12} = 9
+10 -> {12} = 2
+11 -> {13} = 19
+12 -> {14} = 5
+13 -> {14} = 1
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+ 0  *   0   0   *   *   *   *   *   *   *   *   *   *   *   *
+ 1  *   *   *   2   *   *   2   *   *   *   *   *   *   *   *
+ 2  *   *   *   *   *   *   5   *   *   *   *   *   *   *   *
+ 3  *   *   *   *   4   *   *   *   *   *   *   *   *   *   *
+ 4  *   *   *   *   *   1   *   *   *   *   *   *   *   *   *
+ 5  *   *   *   *   *   *   *   *   *   *   *   *   *   *   9
+ 6  *   *   *   *   *   2   *   2   *   *   *   2   *   2   *
+ 7  *   *   *   *   *   *   *   *   5   *   *   *   5   *   *
+ 8  *   *   *   *   *   5   *   *   *   5   *   *   5   *   *
+ 9  *   *   *   *   *   *   *   *   *   *   9   *   9   *   *
+10  *   *   *   *   *   *   *   *   *   *   *   *   2   *   *
+11  *   *   *   *   *   *   *   *   *   *   *   *   *  19   *
+12  *   *   *   *   *   *   *   *   *   *   *   *   *   *   5
+13  *   *   *   *   *   *   *   *   *   *   *   *   *   *   1
+14  *   *   *   *   *   *   *   *   *   *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 1: 1, 2: 1, 3: 2, 6: 2, 4: 3, 11: 3, 7: 3, 13: 4, 8: 4, 9: 5, 5: 5, 10: 6, 12: 7, 14: 8}
+
+Earliest dates table : 
+   {0: 0, 1: 0, 2: 0, 3: 2, 4: 6, 5: 7, 6: 5, 7: 7, 8: 12, 9: 17, 10: 26, 11: 7, 12: 28, 13: 26, 14: 33}
+
+Latest dates table : 
+   {0: -10, 1: -7, 2: -10, 3: 19, 4: 23, 5: 24, 6: -5, 7: -3, 8: 2, 9: 17, 10: 26, 11: 13, 12: 28, 13: 32, 14: 33}
+
+Floats table : 
+   {0: -10, 1: -7, 2: -10, 3: 17, 4: 17, 5: 17, 6: -10, 7: -10, 8: -10, 9: 0, 10: 0, 11: 6, 12: 0, 13: 6, 14: 0}
+
+Critical path : 
+   9 -> 10 -> 12
+
+*** END OF GRAPH NUMBER 2 STUDY ***
+
+*** GRAPH NUMBER3 STUDY ***
+
+
+Creating the scheduling graph:
+
+14 vertices
+22 edges
+
+No negative duration detected
+
+0 -> {1, 2} = 0
+1 -> {3} = 2
+2 -> {3, 4} = 5
+3 -> {12} = 4
+4 -> {8, 11, 3, 5} = 2
+5 -> {9, 6} = 5
+6 -> {8, 9, 7} = 5
+7 -> {8, 9} = 9
+8 -> {13} = 1
+9 -> {13} = 5
+10 -> {13} = 9
+11 -> {10} = 1
+12 -> {8} = 1
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9  10  11  12  13
+ 0  *   0   0   *   *   *   *   *   *   *   *   *   *   *
+ 1  *   *   *   2   *   *   *   *   *   *   *   *   *   *
+ 2  *   *   *   5   5   *   *   *   *   *   *   *   *   *
+ 3  *   *   *   *   *   *   *   *   *   *   *   *   4   *
+ 4  *   *   *   2   *   2   *   *   2   *   *   2   *   *
+ 5  *   *   *   *   *   *   5   *   *   5   *   *   *   *
+ 6  *   *   *   *   *   *   *   5   5   5   *   *   *   *
+ 7  *   *   *   *   *   *   *   *   9   9   *   *   *   *
+ 8  *   *   *   *   *   *   *   *   *   *   *   *   *   1
+ 9  *   *   *   *   *   *   *   *   *   *   *   *   *   5
+10  *   *   *   *   *   *   *   *   *   *   *   *   *   9
+11  *   *   *   *   *   *   *   *   *   *   1   *   *   *
+12  *   *   *   *   *   *   *   *   1   *   *   *   *   *
+13  *   *   *   *   *   *   *   *   *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 1: 1, 2: 1, 4: 2, 11: 3, 3: 3, 5: 3, 10: 4, 12: 4, 6: 4, 7: 5, 8: 6, 9: 6, 13: 7}
+
+Earliest dates table : 
+   {0: 0, 1: 0, 2: 0, 3: 5, 4: 5, 5: 7, 6: 12, 7: 17, 8: 26, 9: 26, 10: 1, 11: 7, 12: 9, 13: 31}
+
+Latest dates table : 
+   {0: -7, 1: 19, 2: -7, 3: 21, 4: -2, 5: 7, 6: 12, 7: 17, 8: 30, 9: 26, 10: 22, 11: 0, 12: 25, 13: 31}
+
+Floats table : 
+   {0: -7, 1: 19, 2: -7, 3: 16, 4: -7, 5: 0, 6: 0, 7: 0, 8: 4, 9: 0, 10: 21, 11: -7, 12: 16, 13: 0}
+
+Critical path : 
+   5 -> 6 -> 7 -> 9
+
+*** END OF GRAPH NUMBER 3 STUDY ***
+
+*** GRAPH NUMBER4 STUDY ***
+
+
+Creating the scheduling graph:
+
+13 vertices
+16 edges
+
+No negative duration detected
+
+0 -> {1, 2} = 0
+1 -> {4} = 3
+2 -> {3} = 2
+3 -> {10} = 3
+4 -> {9, 5, 7} = 5
+5 -> {8, 6} = 4
+6 -> {11} = 2
+7 -> {8} = 2
+8 -> {11} = 4
+9 -> {10} = 5
+10 -> {12} = 1
+11 -> {12} = 2
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9  10  11  12
+ 0  *   0   0   *   *   *   *   *   *   *   *   *   *
+ 1  *   *   *   *   3   *   *   *   *   *   *   *   *
+ 2  *   *   *   2   *   *   *   *   *   *   *   *   *
+ 3  *   *   *   *   *   *   *   *   *   *   3   *   *
+ 4  *   *   *   *   *   5   *   5   *   5   *   *   *
+ 5  *   *   *   *   *   *   4   *   4   *   *   *   *
+ 6  *   *   *   *   *   *   *   *   *   *   *   2   *
+ 7  *   *   *   *   *   *   *   *   2   *   *   *   *
+ 8  *   *   *   *   *   *   *   *   *   *   *   4   *
+ 9  *   *   *   *   *   *   *   *   *   *   5   *   *
+10  *   *   *   *   *   *   *   *   *   *   *   *   1
+11  *   *   *   *   *   *   *   *   *   *   *   *   2
+12  *   *   *   *   *   *   *   *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 1: 1, 2: 1, 4: 2, 3: 2, 9: 3, 5: 3, 7: 3, 10: 4, 6: 4, 8: 4, 11: 5, 12: 6}
+
+Earliest dates table : 
+   {0: 0, 1: 0, 2: 0, 3: 2, 4: 3, 5: 8, 6: 12, 7: 8, 8: 12, 9: 8, 10: 13, 11: 16, 12: 18}
+
+Latest dates table : 
+   {0: 0, 1: 0, 2: 12, 3: 14, 4: 3, 5: 8, 6: 14, 7: 10, 8: 12, 9: 12, 10: 17, 11: 16, 12: 18}
+
+Floats table : 
+   {0: 0, 1: 0, 2: 12, 3: 12, 4: 0, 5: 0, 6: 2, 7: 2, 8: 0, 9: 4, 10: 4, 11: 0, 12: 0}
+
+Critical path : 
+   1 -> 4 -> 5 -> 8 -> 11
+
+*** END OF GRAPH NUMBER 4 STUDY ***
+
+*** GRAPH NUMBER5 STUDY ***
+
+
+Creating the scheduling graph:
+
+15 vertices
+18 edges
+
+No negative duration detected
+
+0 -> {1, 2} = 0
+1 -> {3} = 2
+2 -> {4} = 5
+3 -> {4, 12} = 4
+4 -> {11, 5} = 2
+5 -> {6} = 5
+6 -> {13, 7} = 5
+7 -> {8} = 9
+8 -> {9} = 2
+9 -> {14} = 5
+10 -> {14} = 1
+11 -> {10} = 1
+12 -> {13} = 1
+13 -> {14} = 9
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+ 0  *   0   0   *   *   *   *   *   *   *   *   *   *   *   *
+ 1  *   *   *   2   *   *   *   *   *   *   *   *   *   *   *
+ 2  *   *   *   *   5   *   *   *   *   *   *   *   *   *   *
+ 3  *   *   *   *   4   *   *   *   *   *   *   *   4   *   *
+ 4  *   *   *   *   *   2   *   *   *   *   *   2   *   *   *
+ 5  *   *   *   *   *   *   5   *   *   *   *   *   *   *   *
+ 6  *   *   *   *   *   *   *   5   *   *   *   *   *   5   *
+ 7  *   *   *   *   *   *   *   *   9   *   *   *   *   *   *
+ 8  *   *   *   *   *   *   *   *   *   2   *   *   *   *   *
+ 9  *   *   *   *   *   *   *   *   *   *   *   *   *   *   5
+10  *   *   *   *   *   *   *   *   *   *   *   *   *   *   1
+11  *   *   *   *   *   *   *   *   *   *   1   *   *   *   *
+12  *   *   *   *   *   *   *   *   *   *   *   *   *   1   *
+13  *   *   *   *   *   *   *   *   *   *   *   *   *   *   9
+14  *   *   *   *   *   *   *   *   *   *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 1: 1, 2: 1, 3: 2, 4: 3, 12: 3, 11: 4, 5: 4, 10: 5, 6: 5, 13: 6, 7: 6, 8: 7, 9: 8, 14: 9}
+
+Earliest dates table : 
+   {0: 0, 1: 0, 2: 0, 3: 2, 4: 6, 5: 8, 6: 13, 7: 18, 8: 27, 9: 29, 10: 1, 11: 8, 12: 6, 13: 18, 14: 34}
+
+Latest dates table : 
+   {0: -8, 1: -8, 2: -7, 3: -6, 4: -2, 5: 8, 6: 13, 7: 18, 8: 27, 9: 29, 10: 33, 11: 0, 12: 24, 13: 25, 14: 34}
+
+Floats table : 
+   {0: -8, 1: -8, 2: -7, 3: -8, 4: -8, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 32, 11: -8, 12: 18, 13: 7, 14: 0}
+
+Critical path : 
+   5 -> 6 -> 7 -> 8 -> 9
+
+*** END OF GRAPH NUMBER 5 STUDY ***
+
+*** GRAPH NUMBER6 STUDY ***
+
+
+Creating the scheduling graph:
+
+14 vertices
+23 edges
+
+No negative duration detected
+
+0 -> {1, 2} = 0
+1 -> {3, 4, 12} = 10
+2 -> {3, 4} = 10
+3 -> {9, 10} = 9
+4 -> {9, 5, 7} = 5
+5 -> {8, 6} = 4
+6 -> {11, 12} = 2
+7 -> {8} = 2
+8 -> {11} = 4
+9 -> {8, 10} = 8
+10 -> {11} = 12
+11 -> {13} = 2
+12 -> {13} = 20
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9  10  11  12  13
+ 0  *   0   0   *   *   *   *   *   *   *   *   *   *   *
+ 1  *   *   *  10  10   *   *   *   *   *   *   *  10   *
+ 2  *   *   *  10  10   *   *   *   *   *   *   *   *   *
+ 3  *   *   *   *   *   *   *   *   *   9   9   *   *   *
+ 4  *   *   *   *   *   5   *   5   *   5   *   *   *   *
+ 5  *   *   *   *   *   *   4   *   4   *   *   *   *   *
+ 6  *   *   *   *   *   *   *   *   *   *   *   2   2   *
+ 7  *   *   *   *   *   *   *   *   2   *   *   *   *   *
+ 8  *   *   *   *   *   *   *   *   *   *   *   4   *   *
+ 9  *   *   *   *   *   *   *   *   8   *   8   *   *   *
+10  *   *   *   *   *   *   *   *   *   *   *  12   *   *
+11  *   *   *   *   *   *   *   *   *   *   *   *   *   2
+12  *   *   *   *   *   *   *   *   *   *   *   *   *  20
+13  *   *   *   *   *   *   *   *   *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 1: 1, 2: 1, 3: 2, 4: 2, 9: 3, 5: 3, 7: 3, 10: 4, 6: 4, 8: 4, 12: 5, 11: 5, 13: 6}
+
+Earliest dates table : 
+   {0: 0, 1: 0, 2: 0, 3: 10, 4: 10, 5: 15, 6: 19, 7: 15, 8: 19, 9: 19, 10: 27, 11: 39, 12: 21, 13: 41}
+
+Latest dates table : 
+   {0: -8, 1: -8, 2: -8, 3: 2, 4: 6, 5: 15, 6: 19, 7: 33, 8: 35, 9: 11, 10: 27, 11: 39, 12: 21, 13: 41}
+
+Floats table : 
+   {0: -8, 1: -8, 2: -8, 3: -8, 4: -4, 5: 0, 6: 0, 7: 18, 8: 16, 9: -8, 10: 0, 11: 0, 12: 0, 13: 0}
+
+Critical path : 
+   5 -> 6 -> 10 -> 11 -> 12
+
+*** END OF GRAPH NUMBER 6 STUDY ***
+
+*** GRAPH NUMBER7 STUDY ***
+
+
+Creating the scheduling graph:
+
+12 vertices
+16 edges
+
+No negative duration detected
+
+0 -> {4, 6, 7} = 0
+1 -> {9} = 1
+2 -> {11} = 2
+3 -> {9} = 3
+4 -> {1, 5} = 4
+5 -> {8} = 5
+6 -> {10, 3} = 6
+7 -> {8, 2} = 7
+8 -> {9} = 8
+9 -> {11} = 9
+10 -> {1} = 10
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9  10  11
+ 0  *   *   *   *   0   *   0   0   *   *   *   *
+ 1  *   *   *   *   *   *   *   *   *   1   *   *
+ 2  *   *   *   *   *   *   *   *   *   *   *   2
+ 3  *   *   *   *   *   *   *   *   *   3   *   *
+ 4  *   4   *   *   *   4   *   *   *   *   *   *
+ 5  *   *   *   *   *   *   *   *   5   *   *   *
+ 6  *   *   *   6   *   *   *   *   *   *   6   *
+ 7  *   *   7   *   *   *   *   *   7   *   *   *
+ 8  *   *   *   *   *   *   *   *   *   8   *   *
+ 9  *   *   *   *   *   *   *   *   *   *   *   9
+10  *  10   *   *   *   *   *   *   *   *   *   *
+11  *   *   *   *   *   *   *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 4: 1, 6: 1, 7: 1, 5: 2, 10: 2, 3: 2, 2: 2, 8: 3, 1: 3, 9: 4, 11: 5}
+
+Earliest dates table : 
+   {0: 0, 1: 10, 2: 7, 3: 6, 4: 0, 5: 4, 6: 0, 7: 0, 8: 9, 9: 17, 10: 6, 11: 26}
+
+Latest dates table : 
+   {0: -6, 1: 16, 2: 24, 3: 14, 4: 0, 5: 4, 6: -6, 7: 0, 8: 9, 9: 17, 10: 0, 11: 26}
+
+Floats table : 
+   {0: -6, 1: 6, 2: 17, 3: 8, 4: 0, 5: 0, 6: -6, 7: 0, 8: 0, 9: 0, 10: -6, 11: 0}
+
+Critical path : 
+   4 -> 5 -> 7 -> 8 -> 9
+
+*** END OF GRAPH NUMBER 7 STUDY ***
+
+*** GRAPH NUMBER8 STUDY ***
+
+
+Creating the scheduling graph:
+
+12 vertices
+18 edges
+
+No negative duration detected
+
+0 -> {4, 5, 6, 7, 10} = 0
+1 -> {9} = 1
+2 -> {9} = 2
+3 -> {9} = 3
+4 -> {1} = 4
+5 -> {8, 1} = 5
+6 -> {3} = 6
+7 -> {8, 2} = 7
+8 -> {9} = 9
+9 -> {11} = 9
+10 -> {1, 3} = 10
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9  10  11
+ 0  *   *   *   *   0   0   0   0   *   *   0   *
+ 1  *   *   *   *   *   *   *   *   *   1   *   *
+ 2  *   *   *   *   *   *   *   *   *   2   *   *
+ 3  *   *   *   *   *   *   *   *   *   3   *   *
+ 4  *   4   *   *   *   *   *   *   *   *   *   *
+ 5  *   5   *   *   *   *   *   *   5   *   *   *
+ 6  *   *   *   6   *   *   *   *   *   *   *   *
+ 7  *   *   7   *   *   *   *   *   7   *   *   *
+ 8  *   *   *   *   *   *   *   *   *   9   *   *
+ 9  *   *   *   *   *   *   *   *   *   *   *   9
+10  *  10   *  10   *   *   *   *   *   *   *   *
+11  *   *   *   *   *   *   *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 4: 1, 5: 1, 6: 1, 7: 1, 10: 1, 8: 2, 2: 2, 1: 2, 3: 2, 9: 3, 11: 4}
+
+Earliest dates table : 
+   {0: 0, 1: 10, 2: 7, 3: 10, 4: 0, 5: 0, 6: 0, 7: 0, 8: 7, 9: 16, 10: 0, 11: 25}
+
+Latest dates table : 
+   {0: 0, 1: 15, 2: 14, 3: 13, 4: 6, 5: 2, 6: 4, 7: 0, 8: 7, 9: 16, 10: 0, 11: 25}
+
+Floats table : 
+   {0: 0, 1: 5, 2: 7, 3: 3, 4: 6, 5: 2, 6: 4, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0}
+
+Critical path : 
+   7 -> 8 -> 9 -> 10
+
+*** END OF GRAPH NUMBER 8 STUDY ***
+
+*** GRAPH NUMBER9 STUDY ***
+
+
+Creating the scheduling graph:
+
+12 vertices
+19 edges
+
+No negative duration detected
+
+0 -> {10, 4, 6, 7} = 0
+1 -> {9} = 1
+2 -> {9} = 2
+3 -> {9} = 3
+4 -> {1, 5} = 4
+5 -> {8, 1} = 5
+6 -> {3} = 6
+7 -> {8, 2} = 7
+8 -> {1, 9} = 8
+9 -> {11} = 9
+10 -> {1, 3} = 10
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9  10  11
+ 0  *   *   *   *   0   *   0   0   *   *   0   *
+ 1  *   *   *   *   *   *   *   *   *   1   *   *
+ 2  *   *   *   *   *   *   *   *   *   2   *   *
+ 3  *   *   *   *   *   *   *   *   *   3   *   *
+ 4  *   4   *   *   *   4   *   *   *   *   *   *
+ 5  *   5   *   *   *   *   *   *   5   *   *   *
+ 6  *   *   *   6   *   *   *   *   *   *   *   *
+ 7  *   *   7   *   *   *   *   *   7   *   *   *
+ 8  *   8   *   *   *   *   *   *   *   8   *   *
+ 9  *   *   *   *   *   *   *   *   *   *   *   9
+10  *  10   *  10   *   *   *   *   *   *   *   *
+11  *   *   *   *   *   *   *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 10: 1, 4: 1, 6: 1, 7: 1, 5: 2, 3: 2, 2: 2, 8: 3, 1: 4, 9: 5, 11: 6}
+
+Earliest dates table : 
+   {0: 0, 1: 10, 2: 7, 3: 10, 4: 0, 5: 4, 6: 0, 7: 0, 8: 9, 9: 17, 10: 0, 11: 26}
+
+Latest dates table : 
+   {0: -7, 1: 16, 2: 15, 3: 14, 4: -7, 5: -3, 6: 4, 7: -5, 8: 2, 9: 17, 10: 0, 11: 26}
+
+Floats table : 
+   {0: -7, 1: 6, 2: 8, 3: 4, 4: -7, 5: -7, 6: 4, 7: -5, 8: -7, 9: 0, 10: 0, 11: 0}
+
+Critical path : 
+   9 -> 10
+
+*** END OF GRAPH NUMBER 9 STUDY ***
+
+*** GRAPH NUMBER10 STUDY ***
+
+
+Creating the scheduling graph:
+
+10 vertices
+16 edges
+
+No negative duration detected
+
+0 -> {1} = 0
+1 -> {2, 4, 5} = 2
+2 -> {8, 3, 4} = 3
+3 -> {7} = 5
+4 -> {8, 5, 6} = 6
+5 -> {6, 7} = 2
+6 -> {9} = 1
+7 -> {8} = 6
+8 -> {9} = 1
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9
+ 0  *   0   *   *   *   *   *   *   *   *
+ 1  *   *   2   *   2   2   *   *   *   *
+ 2  *   *   *   3   3   *   *   *   3   *
+ 3  *   *   *   *   *   *   *   5   *   *
+ 4  *   *   *   *   *   6   6   *   6   *
+ 5  *   *   *   *   *   *   2   2   *   *
+ 6  *   *   *   *   *   *   *   *   *   1
+ 7  *   *   *   *   *   *   *   *   6   *
+ 8  *   *   *   *   *   *   *   *   *   1
+ 9  *   *   *   *   *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 1: 1, 2: 2, 3: 3, 4: 3, 5: 4, 6: 5, 7: 5, 8: 6, 9: 7}
+
+Earliest dates table : 
+   {0: 0, 1: 0, 2: 2, 3: 5, 4: 5, 5: 11, 6: 13, 7: 13, 8: 19, 9: 20}
+
+Latest dates table : 
+   {0: 0, 1: 0, 2: 2, 3: 8, 4: 5, 5: 11, 6: 19, 7: 13, 8: 19, 9: 20}
+
+Floats table : 
+   {0: 0, 1: 0, 2: 0, 3: 3, 4: 0, 5: 0, 6: 6, 7: 0, 8: 0, 9: 0}
+
+Critical path : 
+   1 -> 2 -> 4 -> 5 -> 7 -> 8
+
+*** END OF GRAPH NUMBER 10 STUDY ***
+
+*** GRAPH NUMBER11 STUDY ***
+
+
+Creating the scheduling graph:
+
+10 vertices
+16 edges
+
+No negative duration detected
+
+0 -> {1} = 0
+1 -> {2, 4, 5} = 1
+2 -> {8, 3} = 1
+3 -> {7} = 4
+4 -> {8, 2, 6} = 2
+5 -> {4, 6, 7} = 5
+6 -> {8} = 6
+7 -> {8} = 3
+8 -> {9} = 0
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9
+ 0  *   0   *   *   *   *   *   *   *   *
+ 1  *   *   1   *   1   1   *   *   *   *
+ 2  *   *   *   1   *   *   *   *   1   *
+ 3  *   *   *   *   *   *   *   4   *   *
+ 4  *   *   2   *   *   *   2   *   2   *
+ 5  *   *   *   *   5   *   5   5   *   *
+ 6  *   *   *   *   *   *   *   *   6   *
+ 7  *   *   *   *   *   *   *   *   3   *
+ 8  *   *   *   *   *   *   *   *   *   0
+ 9  *   *   *   *   *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 1: 1, 5: 2, 4: 3, 2: 4, 6: 4, 3: 5, 7: 6, 8: 7, 9: 8}
+
+Earliest dates table : 
+   {0: 0, 1: 0, 2: 2, 3: 3, 4: 5, 5: 1, 6: 7, 7: 7, 8: 13, 9: 13}
+
+Latest dates table : 
+   {0: -1, 1: -1, 2: 5, 3: 6, 4: 0, 5: 0, 6: 7, 7: 10, 8: 13, 9: 13}
+
+Floats table : 
+   {0: -1, 1: -1, 2: 3, 3: 3, 4: -5, 5: -1, 6: 0, 7: 3, 8: 0, 9: 0}
+
+Critical path : 
+   6
+
+*** END OF GRAPH NUMBER 11 STUDY ***
+
+*** GRAPH NUMBER12 STUDY ***
+
+
+Creating the scheduling graph:
+
+14 vertices
+23 edges
+
+No negative duration detected
+
+0 -> {1, 2} = 0
+1 -> {3, 4, 12} = 10
+2 -> {3, 4} = 10
+3 -> {9} = 9
+4 -> {9, 5, 7} = 5
+5 -> {8, 6} = 4
+6 -> {11, 12} = 2
+7 -> {8} = 2
+8 -> {11} = 4
+9 -> {8, 10} = 8
+10 -> {11, 3} = 12
+11 -> {13} = 2
+12 -> {13} = 20
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5   6   7   8   9  10  11  12  13
+ 0  *   0   0   *   *   *   *   *   *   *   *   *   *   *
+ 1  *   *   *  10  10   *   *   *   *   *   *   *  10   *
+ 2  *   *   *  10  10   *   *   *   *   *   *   *   *   *
+ 3  *   *   *   *   *   *   *   *   *   9   *   *   *   *
+ 4  *   *   *   *   *   5   *   5   *   5   *   *   *   *
+ 5  *   *   *   *   *   *   4   *   4   *   *   *   *   *
+ 6  *   *   *   *   *   *   *   *   *   *   *   2   2   *
+ 7  *   *   *   *   *   *   *   *   2   *   *   *   *   *
+ 8  *   *   *   *   *   *   *   *   *   *   *   4   *   *
+ 9  *   *   *   *   *   *   *   *   8   *   8   *   *   *
+10  *   *   *  12   *   *   *   *   *   *   *  12   *   *
+11  *   *   *   *   *   *   *   *   *   *   *   *   *   2
+12  *   *   *   *   *   *   *   *   *   *   *   *   *  20
+13  *   *   *   *   *   *   *   *   *   *   *   *   *   *
+No negative duration detected
+
+This graph contains at least a cycle, this means we cannot do any further computations.
+
+
+*** END OF GRAPH NUMBER 12 STUDY ***
+
+*** GRAPH NUMBER13 STUDY ***
+
+
+Creating the scheduling graph:
+
+6 vertices
+7 edges
+
+No negative duration detected
+
+0 -> {1, 3} = 0
+1 -> {2} = 9
+2 -> {5} = 2
+3 -> {2, 4} = 4
+4 -> {5} = 7
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5
+ 0  *   0   *   0   *   *
+ 1  *   *   9   *   *   *
+ 2  *   *   *   *   *   2
+ 3  *   *   4   *   4   *
+ 4  *   *   *   *   *   7
+ 5  *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 1: 1, 3: 1, 2: 2, 4: 2, 5: 3}
+
+Earliest dates table : 
+   {0: 0, 1: 0, 2: 9, 3: 0, 4: 4, 5: 11}
+
+Latest dates table : 
+   {0: 0, 1: 0, 2: 9, 3: 0, 4: 4, 5: 11}
+
+Floats table : 
+   {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+
+Critical path : 
+   1 -> 2 -> 3 -> 4
+
+*** END OF GRAPH NUMBER 13 STUDY ***
+
+*** GRAPH NUMBER14 STUDY ***
+
+
+Creating the scheduling graph:
+
+6 vertices
+7 edges
+
+No negative duration detected
+
+0 -> {1, 2} = 0
+1 -> {3} = 3
+2 -> {3, 4} = 2
+3 -> {5} = 4
+4 -> {3} = 1
+
+-- End of graph --
+
+Value Matrix:
+
+    0   1   2   3   4   5
+ 0  *   0   0   *   *   *
+ 1  *   *   *   3   *   *
+ 2  *   *   *   2   2   *
+ 3  *   *   *   *   *   4
+ 4  *   *   *   1   *   *
+ 5  *   *   *   *   *   *
+We made sure that we have no negative durations or cycles which means we can now do the other computations.
+
+Ranks :
+{0: 0, 1: 1, 2: 1, 4: 2, 3: 3, 5: 4}
+
+Earliest dates table : 
+   {0: 0, 1: 0, 2: 0, 3: 3, 4: 2, 5: 7}
+
+Latest dates table : 
+   {0: 0, 1: 0, 2: 0, 3: 3, 4: 2, 5: 7}
+
+Floats table : 
+   {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+
+Critical path : 
+   1 -> 2 -> 3 -> 4
+
+*** END OF GRAPH NUMBER 14 STUDY ***
+
+Process finished with exit code 0
