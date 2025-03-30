@@ -94,15 +94,15 @@ def display_value_matrix(graph):
         print(row_str)
 
 def compute_ranks(graph):
-    if not detect_cycle(graph):
-        from collections import deque
+    if not detect_cycle(graph):     # Check if the graph contains a cycle
+        from collections import deque  # Import deque for queue operations
 
         # Initialize in-degree of each vertex
         in_degree = {node: len(graph[node]["predecessors"]) for node in graph}
         queue = deque([node for node in graph if in_degree[node] == 0])
         rank = {}
         current_rank = -1 #We set up a initial value of -1 so our ranking computation loop starts at value 0 
-
+        # level-order traversal
         while queue:
             current_rank += 1
             for _ in range(len(queue)):
@@ -115,7 +115,7 @@ def compute_ranks(graph):
 
         return rank
     else:
-
+        # If a cycle is detected, ranking is not possible
         print("A cycle has been detect, unable to compute rank !")
 
 
@@ -136,7 +136,7 @@ def latest_dates(graph):
     
 
 def compute_float(graph):
-    return {node: latest_dates(graph)[node] - earliest_dates(graph)[node] for node in graph}
+    return {node: latest_dates(graph)[node] - earliest_dates(graph)[node] for node in graph} # substract earliest dates to latest dates at each index (each node)
 
 
 
