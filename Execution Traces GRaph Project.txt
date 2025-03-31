@@ -1,4 +1,4 @@
-"C:\Users\nicol\PycharmProjects\Graph Theory Project\venv\Scripts\python.exe" "C:/Users/nicol/PycharmProjects/Graph Theory Project/main.py" 
+
 
 *** GRAPH NUMBER1 STUDY ***
 
